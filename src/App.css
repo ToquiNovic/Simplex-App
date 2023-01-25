@@ -1,0 +1,46 @@
+.App {
+  text-align: center;
+  background: #195961;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #676672, #395255);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #cfcde6, #697b7e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: auto;
+}
+
+.InputCoeficiente {
+  max-width: 5em;
+  min-width: 4em;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  max-height: 30vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  max-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+td.btnSize {width:60px}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
