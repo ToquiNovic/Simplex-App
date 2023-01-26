@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Col, Row, Jumbotron} from "reactstrap";
-import ModalModels from "../../Models"
+// import ModalModels from "../../Models"
 import Configuration from "../Configuration";
 import Processing from "../Processing";
 import Presentation from "../Presentation";
@@ -104,7 +104,7 @@ class SinglePage extends React.Component {
            
           </Col>
         </Row>
-        <Row><ModalModels open={modelsOpen} model={model} setModel={this.setModel} handleClose={this.showModels}/></Row>
+        {/* <Row><ModalModels open={modelsOpen} model={model} setModel={this.setModel} handleClose={this.showModels}/></Row> */}
       </Container>
     );
   }
