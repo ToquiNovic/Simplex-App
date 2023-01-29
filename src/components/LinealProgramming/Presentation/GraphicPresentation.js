@@ -151,8 +151,7 @@ class GraphicPresentation extends React.Component{
                 } 
             }
         })
-        // console.log('MAXS:'+highestValueX+'y:'+highestValueY);
-        
+                
         return { lines,expresiones,highestValueX,highestValueY }
     }
 
@@ -541,10 +540,10 @@ class GraphicPresentation extends React.Component{
         }
         const calcResult = point =>{return (Math.abs(coeficientes.x*point.x + coeficientes.y*point.y)).toFixed(2)}
         console.log("IMPRIMIENDO RESULT:" + calcResult);
-        let slacksTitles = restricciones.map(restri => <th key={'S-T-'+restri.ri}>{'S'+restri.ri}</th>)
+        let slacksTitles = restricciones.map(restri => <th key={'S-T-'+(restri.ri+1)}>{'S'+(restri.ri+1)}</th>)
         return( <Table>
-                    <thead><tr><th>Punto</th><th>Resultado</th><th>X0</th><th>X1</th>{slacksTitles}</tr></thead>
-                    <tbody>{points.map(point => <tr key={'T-P-'+point.P}><td>P:{point.P}</td><td>{calcResult(point)}</td><td>{point.x}</td><td>{point.y}</td>{calcSlacksValue(point)}</tr>)}</tbody>
+                    <thead><tr><th>Punto</th><th>Resultado</th><th>X1</th><th>X2</th>{slacksTitles}</tr></thead>
+                    <tbody>{points.map(point => <tr key={'T-P-'+point.P}><td>P:{(point.P+1)}</td><td>{calcResult(point)}</td><td>{point.x}</td><td>{point.y}</td>{calcSlacksValue(point)}</tr>)}</tbody>
                 </Table>)
     }
        
@@ -583,8 +582,8 @@ class GraphicPresentation extends React.Component{
                         <XYPlot onMouseLeave={() => this.setState({pointer: null})} width={500} height={500}>
                             <HorizontalGridLines/>
                             <VerticalGridLines/>
-                            <XAxis title='Variable X0' />
-                            <YAxis  title='Variable X1'/>
+                            <XAxis title='Variable X1' />
+                            <YAxis  title='Variable X2'/>
 
                             {areaGraph && this.mapperAreaSeries(lines,referencias)}
                             

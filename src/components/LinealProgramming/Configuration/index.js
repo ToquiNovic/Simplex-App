@@ -46,14 +46,14 @@ class Configuration extends React.Component {
           outline
           onClick={ () => this.props.handleMethod("graph")}
           active={this.props.status.method === "graph"}
-          color="primary">
+          color="danger">
           Gráfico
         </Button>
         <Button
           outline
           onClick={ () => this.props.handleMethod("simplex")}
           active={this.props.status.method === "simplex"}
-          color="primary">
+          color="warning">
           Simplex
         </Button> 
       </ButtonGroup>
@@ -64,59 +64,25 @@ class Configuration extends React.Component {
           outline
           onClick={() => this.props.handleObjective("max")}
           active={this.props.status.objective === "max"}
-          color="primary"
+          color="danger"
         >
           Maximizar
         </Button>
-        {/* <Button
+        <Button
           outline
           onClick={() => this.props.handleObjective("min")}
           active={this.props.status.objective === "min"}
-          color="primary"
+          color="warning"
         >
           Minimizar
-        </Button> */}
+        </Button> 
       </ButtonGroup>
     );
 
     return (
       <>
-        <h3>Comenzamos configurando nuestro modelo</h3>
+        <h3>Simplex-App</h3>
         <Container>
-          <Row>
-            {/* <Col>
-              <UncontrolledPopover flip={false} trigger="hover" placement="top" target="CardInteger">
-                <PopoverBody>Esta función activa o desactiva la Programacion Lineal Entera.</PopoverBody>
-              </UncontrolledPopover>
-              <Card outline color="secondary" id="CardInteger" className="mt-2 mx-auto">
-                <CardHeader>Programación entera</CardHeader>
-                <CardBody>
-                  <Button
-                    outline
-                    color={this.props.status.integer ? "success" : "danger"}
-                    onClick={() => this.props.toggleInteger()}
-                  >
-                    {this.props.status.integer ? "Activa" : "Inactiva"}
-                  </Button>
-                </CardBody>
-              </Card>
-            </Col> */}
-            {/* <Col>
-              <UncontrolledPopover flip={false} trigger="hover" placement="top" target="CardModel">
-                <PopoverBody>
-                  En esta seccion usted podra almacenar en la base de datos los modelos deseados, realizando el registro con su cuenta de Google.
-                </PopoverBody>
-              </UncontrolledPopover>
-              <Card outline color="secondary" id="CardModel" className="mt-2 mx-auto">
-                <CardHeader>Gestion de Modelos</CardHeader>
-                <CardBody>
-                  <Button color="warning" outline onClick={this.showModels}>
-                    Modelos
-                  </Button>
-                </CardBody>
-              </Card>
-            </Col> */}
-          </Row>
           <Row>
             <Col>
               <UncontrolledPopover flip={false} trigger="hover" placement="top" target="CardUtil">
@@ -124,7 +90,7 @@ class Configuration extends React.Component {
                   Aquí debes seleccionar el método de cálculo y visualización de los resultados.
                 </PopoverBody>
               </UncontrolledPopover>
-              <Card outline color="secondary" id="CardUtil" className="mt-3 mx-auto">
+              <Card outline color="light" id="CardUtil" className="my-3 mx-auto">
                 <CardHeader>Método a utilizar</CardHeader>
                 <CardBody>{buttonsMethods}</CardBody>
               </Card>
@@ -137,7 +103,7 @@ class Configuration extends React.Component {
                   función.
                 </PopoverBody>
               </UncontrolledPopover>
-              <Card outline color="secondary" id="CardOpt" className="mt-3 mx-auto">
+              <Card outline color="light" id="CardOpt" className="mt-3 mx-auto">
                 <CardHeader>Tipo de optimización</CardHeader>
                 <CardBody>{buttonsOptType}</CardBody>
               </Card>
@@ -151,7 +117,7 @@ class Configuration extends React.Component {
                 dinámica.
               </PopoverBody>
             </UncontrolledPopover>
-            <Card outline color="secondary" id="CardVariables" className="w-100 mt-3 mx-auto">
+            <Card  color="primary" inverse id="CardVariables" className="w-100 mt-3 mx-auto">
               <CardHeader>
                 <CardTitle className="text-left">
                   <h4>Variables</h4>
@@ -168,7 +134,7 @@ class Configuration extends React.Component {
                 carga dinámica.
               </PopoverBody>
             </UncontrolledPopover>
-            <Card outline color="secondary" id="CardRestri" className="w-100 mt-3 mx-auto">
+            <Card color="primary" inverse id="CardRestri" className="w-100 mt-3 mx-auto">
               <CardHeader>
                 <CardTitle className="text-left">
                   <h4>Restricciones</h4>

@@ -1,10 +1,9 @@
 import React from "react";
 import { Container, Col, Row, Jumbotron} from "reactstrap";
-// import ModalModels from "../../Models"
 import Configuration from "../Configuration";
 import Processing from "../Processing";
 import Presentation from "../Presentation";
-import logo from "../logo.svg";
+// import logo from "../logo.svg";
 
 class SinglePage extends React.Component {
   constructor(props) {
@@ -50,7 +49,6 @@ class SinglePage extends React.Component {
     let { model } = this.state;
     model.integer = !model.integer;
     this.setState({ model, changes: true });
-
   }
   //Esta función guarda el resultado (inutilizada por el momento)
   handleResult = result => this.setState({ result });
@@ -64,16 +62,16 @@ class SinglePage extends React.Component {
   setModel = model => this.setState({ model, changes:true });
 
   render() {
-    let { modelsOpen, model, result } = this.state
+    let { model, result } = this.state
     console.log('PRESENTATION:'+result);
     
     return (
       <Container fluid className="App">
-        <Row className="">
+        {/* <Row className="">
           <Col xs={12} md={6} className="mx-auto">
             <img src={logo} className="App-logo" alt="logo" height="200" />
           </Col>
-        </Row>
+        </Row> */}
         <Row>
           <Col xs={12} md={6} className="my-4 mx-auto ">
             <Row>
@@ -88,23 +86,19 @@ class SinglePage extends React.Component {
                     showModels={this.showModels}/>
                 </Jumbotron>  
             </Row>
-
             <Row>
                 <Jumbotron className='w-100'>
                     <Processing status={model} handleVariables={this.handleVariables}
                     handleRestricciones={this.handleRestricciones} lastStep={this.lastStep}/>
-                </Jumbotron>
-                
+                </Jumbotron>                
             </Row>
             <Row>
                 <Jumbotron className='w-100'>
                     <Presentation status={model} handleResult={this.handleResult} lastStep={this.lastStep}/>
                 </Jumbotron>
-            </Row>
-           
+            </Row>           
           </Col>
         </Row>
-        {/* <Row><ModalModels open={modelsOpen} model={model} setModel={this.setModel} handleClose={this.showModels}/></Row> */}
       </Container>
     );
   }

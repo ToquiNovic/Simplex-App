@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Card, CardBody, CardHeader, CardTitle, Alert } from "reactstrap";
 import Restriccion from "./Restriccion";
 import FuncionObj from "./FuncionObj";
-import ReferencesList from "../ReferencesList";
+import ReferencesList from "../ReferencesList"
 
 class Processing extends React.Component {
   constructor(props) {
@@ -87,7 +87,7 @@ class Processing extends React.Component {
 
     return (
       <>
-        <h3>Cargamos los datos de nuestro modelo</h3>
+        <h3> Inserta los Datos del Modelo</h3>
         <Container>
           <Row>
             <ReferencesList variables={variables} restricciones={restricciones} />

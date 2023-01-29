@@ -8,7 +8,7 @@ const Variable = props => {
         <InputGroup className="mt-1" id={"XTT" + xi} key={"VTD" + xi}>
         <InputGroupAddon addonType="prepend">
           <InputGroupText name="xi" id="variable">
-            {"X" + xi}
+            {"X" + (xi+1)}
           </InputGroupText>
         </InputGroupAddon>
         <Input

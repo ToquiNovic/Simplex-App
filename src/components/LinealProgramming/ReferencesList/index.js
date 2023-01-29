@@ -24,7 +24,7 @@ class ReferencesList extends React.Component {
       .filter(item => item.descripcion !== "")
       .map(item => (
         <ListGroupItem key={"DLGIV" + item.xi} className="text-left">
-          <Badge>{"X" + item.xi}</Badge>
+          <Badge>{"X" + (item.xi+1)}</Badge>
           {" " + item.descripcion}
           <Badge className='float-right'>{'C: '+item.coeficiente}</Badge>
         </ListGroupItem>
@@ -35,9 +35,9 @@ class ReferencesList extends React.Component {
       .filter(item => item.descripcion !== "")
       .map(item => (
         <ListGroupItem key={"DLGIR" + item.ri} className="text-left">
-          <Badge>{"R" + item.ri}</Badge>
+          <Badge>{"R" + (item.ri+1)}</Badge>
           {" " + item.descripcion}
-          <Badge className='float-right'>{item.coeficientes.map((co,indx) => co+' X'+indx+' ') + ' '+item.eq+' '+item.derecha}</Badge>
+          <Badge className='float-right'>{item.coeficientes.map((co,indx) => co+' X'+(indx+1)+' ') + ' '+item.eq+' '+item.derecha}</Badge>
         </ListGroupItem>
       ));
 
@@ -52,7 +52,7 @@ class ReferencesList extends React.Component {
           <Row>
             <Col className="text-left">
               <CardTitle>
-                <h4>Referencias</h4>
+                <h4>Modelo Matematico</h4>
               </CardTitle>
             </Col>
             <Col>
@@ -62,7 +62,7 @@ class ReferencesList extends React.Component {
                 onClick={() => this.setState({ references: !this.state.references })}
                 color={!this.state.references ? "success" : "danger"}
               >
-                {!this.state.references ? "Ver referencias" : "Ocultar referencias"}
+                {!this.state.references ? "Ver Modelo Matematico" : "Ocultar Modelo Matematico"}
               </Button>
             </Col>
           </Row>

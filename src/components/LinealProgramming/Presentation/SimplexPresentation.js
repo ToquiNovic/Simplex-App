@@ -36,13 +36,13 @@ class SimplexPresentation extends React.Component{
         //Obtenemos la Lista de Variables Slack y Reales
         let variablesList = result._tableau.variablesPerIndex
         //Obtenemos la Lista de Variables Reales
-        let variablesRealesList = result._tableau.variablesPerIndex.filter(el => !el.isSlack);
-        //Contamos la Cantidad de elementos en la fila de resultados (van a ser cero por ser simplex reducido)
-        let itemsinCero = matrix[0].length - 1;
-        //Obtenemos cuales son las variables que no estan en el set de resultados (van a ser cero)
-        let varsEnCero = variablesRealesList.filter( vari => !Object.keys(result.solutionSet).includes(vari.id) )
-        //La cantidad de columnas en la fila de resultados - la cantidad de variables nulas, me devuelven la cantidad de slacks
-        let slacksEnCero = itemsinCero - varsEnCero.length;
+        // let variablesRealesList = result._tableau.variablesPerIndex.filter(el => !el.isSlack);
+        // //Contamos la Cantidad de elementos en la fila de resultados (van a ser cero por ser simplex reducido)
+        // let itemsinCero = matrix[0].length - 1;
+        // //Obtenemos cuales son las variables que no estan en el set de resultados (van a ser cero)
+        // let varsEnCero = variablesRealesList.filter( vari => !Object.keys(result.solutionSet).includes(vari.id) )
+        // //La cantidad de columnas en la fila de resultados - la cantidad de variables nulas, me devuelven la cantidad de slacks
+        // let slacksEnCero = itemsinCero - varsEnCero.length;
 
         //Procesamos INFO
         //Primer elemento de la Tabla, el Optimo.
@@ -104,16 +104,13 @@ class SimplexPresentation extends React.Component{
         //Obtenemos el resultado almacenado
         //Obtenemos las Variables desde las props
         let {variables, restricciones,result} = this.props;
-        
-        
-    
+           
         //Obtenemos  la informacion para la tabla de Analisis
         let itemsTabAnalisis = this.mapperAnalisisTable(result); 
         //Renderizamos el Tablero de analisis
         let elementosTabAnalisis = itemsTabAnalisis.map( (item, index) => <tr key={'T-A-'+index}><td>{item.name}</td><td>{item.item}</td><td>{item.value}</td></tr>);
         
         
-            
         let resultAnalisisCard = 
             <Card outline color='secondary' className="w-100 mt-3 mx-auto">
                 <CardHeader><CardTitle><h4>Tablero de Analisis</h4></CardTitle></CardHeader>
