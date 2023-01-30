@@ -48,7 +48,8 @@ class SimplexPresentation extends React.Component{
         //Primer elemento de la Tabla, el Optimo.
         tableResult.push({name:'Z',item:'',value:result.evaluation});
         //Procesamos todos los elementos a producir (result Set)
-        resultSetArray.forEach( ([key,value]) => tableResult.push({name:'Producir',item:'X'+key, value}) )
+        console.log('valordescriptivo',tableResult);
+        resultSetArray.forEach( ([key,value]) => tableResult.push({name:'Producir',item:'X'+key, value}))
         //Procesamos el uso de los recursos, es decir, los elementos extras de la Fila de Resultados(Matriz)
         if (resultSetArray.length < matrix.length-1) {
             console.log('hola');
