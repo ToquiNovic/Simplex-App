@@ -14,7 +14,7 @@ const Restriction = props => {
 
         <Input
           name={ri}
-          placeholder="Descripcion de la Restriccion"
+          placeholder="Nombre de la Restriccion"
           aria-label="Descripcion"
           aria-describedby="restriccion"
           onChange={handleChange}

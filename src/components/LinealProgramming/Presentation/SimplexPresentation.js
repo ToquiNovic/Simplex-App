@@ -31,11 +31,11 @@ class SimplexPresentation extends React.Component{
         console.log("Imprimimos el resultsSetArray:" + resultSetArray);
         //Obtenemos la matriz del simplex reducida
         let matrix = result._tableau.matrix;
-        //Obtenemos los indices de cada columna
-        let indexByCol = result._tableau.varIndexByCol;
-        //Obtenemos la Lista de Variables Slack y Reales
-        let variablesList = result._tableau.variablesPerIndex
-        //Obtenemos la Lista de Variables Reales
+        // //Obtenemos los indices de cada columna
+        // let indexByCol = result._tableau.varIndexByCol;
+        // //Obtenemos la Lista de Variables Slack y Reales
+        // let variablesList = result._tableau.variablesPerIndex
+        // //Obtenemos la Lista de Variables Reales
         // let variablesRealesList = result._tableau.variablesPerIndex.filter(el => !el.isSlack);
         // //Contamos la Cantidad de elementos en la fila de resultados (van a ser cero por ser simplex reducido)
         // let itemsinCero = matrix[0].length - 1;
@@ -46,7 +46,7 @@ class SimplexPresentation extends React.Component{
 
         //Procesamos INFO
         //Primer elemento de la Tabla, el Optimo.
-        tableResult.push({name:'Optimo',item:'',value:result.evaluation});
+        tableResult.push({name:'Z',item:'',value:result.evaluation});
         //Procesamos todos los elementos a producir (result Set)
         resultSetArray.forEach( ([key,value]) => tableResult.push({name:'Producir',item:'X'+key, value}) )
         //Procesamos el uso de los recursos, es decir, los elementos extras de la Fila de Resultados(Matriz)
@@ -55,23 +55,23 @@ class SimplexPresentation extends React.Component{
         }
 
         //Procesamos los Costo de Oportunidad y los Valores Marginales
-        matrix[0].slice(1)
-                .forEach( (col,indCol) => {
-                    //Creamos un nuevo item.
-                    let item= {name:'',item:'',value:''};
-                    //Verificamos si es Slack o Variable Real
-                    if (variablesList[indexByCol[indCol+1]].isSlack){
-                        item.name = 'Valor Marginal';
-                        item.item = 'R'+indexByCol[indCol+1];
-                        item.value = Math.abs(col);
-                    }else{
-                        item.name = 'Costo de Oportunidad';
-                        item.item = 'X'+variablesList[indexByCol[indCol+1]].id;
-                        item.value = Math.abs(col);
-                    }
+        // matrix[0].slice(1)
+        //         .forEach( (col,indCol) => {
+        //             //Creamos un nuevo item.
+        //             let item= {name:'',item:'',value:''};
+        //             //Verificamos si es Slack o Variable Real
+        //             if (variablesList[indexByCol[indCol+1]].isSlack){
+        //                 item.name = 'Valor Marginal';
+        //                 item.item = 'R'+indexByCol[indCol+1];
+        //                 item.value = Math.abs(col);
+        //             }else{
+        //                 item.name = 'Costo de Oportunidad';
+        //                 item.item = 'X'+variablesList[indexByCol[indCol+1]].id;
+        //                 item.value = Math.abs(col);
+        //             }
                     
-                    //Empujamos el item a la tabla de resultados
-                    tableResult.push(item)})
+        //             //Empujamos el item a la tabla de resultados
+        //             tableResult.push(item)})
             
         return tableResult
     }
@@ -80,7 +80,7 @@ class SimplexPresentation extends React.Component{
                                                     .filter(vari => vari.descripcion !== '')
                                                     .map( vari => 
                                                                 <Card key={'C-V-'+vari.xi} outline color='secondary' className="w-100 mt-3 mx-auto">
-                                                                    <CardHeader><CardTitle>{'Variable: X'+vari.xi}</CardTitle></CardHeader>    
+                                                                    <CardHeader><CardTitle>{'Variable: X'+(vari.xi+1)}</CardTitle></CardHeader>    
                                                                     <CardBody>
                                                                         <Row><CardText>{
                                                                             result.solutionSet[vari.xi] ? 
@@ -108,7 +108,7 @@ class SimplexPresentation extends React.Component{
         //Obtenemos  la informacion para la tabla de Analisis
         let itemsTabAnalisis = this.mapperAnalisisTable(result); 
         //Renderizamos el Tablero de analisis
-        let elementosTabAnalisis = itemsTabAnalisis.map( (item, index) => <tr key={'T-A-'+index}><td>{item.name}</td><td>{item.item}</td><td>{item.value}</td></tr>);
+        let elementosTabAnalisis = itemsTabAnalisis.map( (item, index) => <tr key={'T-A-'+index}><td>{item.name}</td><td>{console.log('hoooolaaaaaaaaa',item.item)}{item.item}</td><td>{item.value}</td></tr>);
         
         
         let resultAnalisisCard = 
@@ -128,7 +128,7 @@ class SimplexPresentation extends React.Component{
         let resultDetalleCard = <Card outline color='secondary' className="w-100 mt-3 mx-auto">
                                     <CardHeader>
                                         <Row>
-                                            <Col className="text-left"><CardTitle><h5>Detalle de Variables Y Recursos:</h5></CardTitle></Col>
+                                            <Col className="text-left"><CardTitle><h5>Detalle de Variables y Recursos:</h5></CardTitle></Col>
                                             <Col><Button outline size='sm'
                                                 onClick={() => this.setState({details:!this.state.details})} 
                                                 color={!this.state.details ? 'success':'danger'}>{!this.state.details ? 'Ver Detalles':'Ocultar Detalles'}</Button>

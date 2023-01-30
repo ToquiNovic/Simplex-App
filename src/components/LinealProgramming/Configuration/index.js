@@ -111,7 +111,7 @@ class Configuration extends React.Component {
           </Row>
           <Row>
             <UncontrolledPopover flip={false} trigger="hover" placement="top" target="CardVariables">
-              <PopoverHeader>Variables</PopoverHeader>
+              <PopoverHeader>Variables de Desición</PopoverHeader>
               <PopoverBody>
                 Aquí debes ingresar las variables que formarán parte del modelo, las mismas son de carga
                 dinámica.
@@ -120,7 +120,7 @@ class Configuration extends React.Component {
             <Card  color="primary" inverse id="CardVariables" className="w-100 mt-3 mx-auto">
               <CardHeader>
                 <CardTitle className="text-left">
-                  <h4>Variables</h4>
+                  <h4>Variables de Desición</h4>
                 </CardTitle>
               </CardHeader>
               <CardBody><Variables method={method} handleVariables={this.handleVariables} variables={variables}/></CardBody>

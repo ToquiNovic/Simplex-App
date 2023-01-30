@@ -8,7 +8,7 @@ var randomColor = require('randomcolor');
 class GraphicPresentation extends React.Component{
     constructor (props){
         super(props)
-        this.state={lineFunctional:[],convexPoints:[],tableResult:'',optimMark:[],points:[],lines:[],referencias:[],value:null,areaGraph:false}
+        this.state={convexPoints:[],tableResult:'',points:[],lines:[],referencias:[],value:null,areaGraph:false}
     }
 
     componentDidMount() {
@@ -40,15 +40,15 @@ class GraphicPresentation extends React.Component{
         let {points,convexPoints} = this.getPoints(restricciones,expresiones,result,highestValueX,highestValueY)    
         //Obtenemos el Punto Optimo
         let optimMark = []
-        if( Object.entries(result).length ){ optimMark = [this.getOptimPoint(result)]}
+        // if( Object.entries(result).length ){ optimMark = [this.getOptimPoint(result)]}
         //Obtenemos la Recta del Funcional.
         // console.log('Maximos X:'+highestValueX+', Y:e'+highestValueY);
-        let lineFunctional = this.getObjectiveFunctionLine(variables,optimMark[0],highestValueX,highestValueY);
+        // let lineFunctional = this.getObjectiveFunctionLine(variables,optimMark[0],highestValueX,highestValueY);
         // console.log(lineFunctional);
         //Obtenemos la Tabla de resultados.
         let tableResult = this.getTableResult(optimMark.concat(points),coefToValueZ,restricciones)
         //Almacenamos el Estado.
-        this.setState({referencias,lines,points,optimMark,convexPoints,lineFunctional,tableResult});
+        this.setState({referencias,lines,points,convexPoints,tableResult});
     }
 
     getCoeficientesToEv =  variables => {
@@ -155,14 +155,14 @@ class GraphicPresentation extends React.Component{
         return { lines,expresiones,highestValueX,highestValueY }
     }
 
-    getColorList = restricciones => restricciones.map( restri => Object({title: 'R'+restri.ri+' Tipo:'+restri.eq, color: randomColor({hue: 'random',luminosity: 'ligth'})}))
+    getColorList = restricciones => restricciones.map( restri => Object({title: 'R'+(restri.ri+1)+' Tipo:'+restri.eq, color: randomColor({hue: 'random',luminosity: 'ligth'})}))
 
     getOptimPoint = solSet => {
         console.log('Generating Optim Point');
         //Analizamos el Punto Optimo.
-        if ( solSet['0'] && solSet['1'] ) {return{x:Number(solSet['0']).toFixed(2),y:Number(solSet['1']).toFixed(2),P:'0 - OPTIMO'}
-        }else if ( solSet['0'] ) {return{x:Number(solSet['0']).toFixed(2),y:(0).toFixed(2),P:'0 - OPTIMO'}
-        }else { return{x:(0).toFixed(2),y:Number(solSet['1']).toFixed(2),P:'0 - OPTIMO'}}
+        if ( solSet['1'] && solSet['2'] ) {return{x:Number(solSet['1']).toFixed(2),y:Number(solSet['2']).toFixed(2),P:'1 - OPTIMO'}
+        }else if ( solSet['1'] ) {return{x:Number(solSet['1']).toFixed(2),y:(0).toFixed(2),P:'1 - OPTIMO'}
+        }else { return{x:(0).toFixed(2),y:Number(solSet['2']).toFixed(2),P:'1 - OPTIMO'}}
     }
 
     getObjectiveFunctionLine = (variables,optimPoint,xMax,yMax) => {
@@ -394,7 +394,7 @@ class GraphicPresentation extends React.Component{
                     point.y=point.y.toFixed(2)
                     return point} 
             } 
-        }
+        };
         //Funcion que devuelve un punto verificado con una Expresion en X y otra en Y
         const getPointFromExpXExpY = ( expX,expY ) => {
             let xRes = Number(expX.solveFor('x'));
@@ -564,7 +564,7 @@ class GraphicPresentation extends React.Component{
 
     render () {
         let {variables,restricciones} = this.props
-        let {referencias,lines,value,points,optimMark,convexPoints,lineFunctional,areaGraph,tableResult} = this.state;
+        let {referencias,lines,value,points,convexPoints,areaGraph,tableResult} = this.state;
         return( 
         <CardBody>
             <Card outline color='secondary'>
@@ -591,13 +591,13 @@ class GraphicPresentation extends React.Component{
 
                             <AreaSeries fill='green' stroke='#fffff' style={{strokeWidth: 0}} opacity={0.6} data={convexPoints}/>
 
-                            <LineSeries color='red' strokeStyle='dashed' data={lineFunctional}/>
+                            {/* <LineSeries color='red' strokeStyle='dashed' data={lineFunctional}/> */}
                             
                             <MarkSeries onValueMouseOver={this.showPoint} onValueMouseOut={this.hidePoint}
                                         color={'blue'} opacity={0.7} data={points}/>
                             
-                            <MarkSeries onValueMouseOver={this.showPoint} onValueMouseOut={this.hidePoint}
-                                        color={'green'} data={optimMark}/>
+                            {/* <MarkSeries onValueMouseOver={this.showPoint} onValueMouseOut={this.hidePoint}
+                                        color={'green'} data={optimMark}/> */}
                             {value && <Hint value={value} />}
 
                         </XYPlot>

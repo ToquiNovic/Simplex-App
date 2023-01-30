@@ -73,7 +73,7 @@ class SinglePage extends React.Component {
           </Col>
         </Row> */}
         <Row>
-          <Col xs={12} md={6} className="my-4 mx-auto ">
+          <Col xs={12} md={6} className="my-4 mx-auto">
             <Row>
                 <Jumbotron className='w-100'>
                     <Configuration   status={model}

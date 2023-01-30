@@ -89,9 +89,9 @@ class Processing extends React.Component {
       <>
         <h3> Inserta los Datos del Modelo</h3>
         <Container>
-          <Row>
+          {/* <Row>
             <ReferencesList variables={variables} restricciones={restricciones} />
-          </Row>
+          </Row> */}
           <Row>
             <Card outline color="secondary" className="w-100 mt-3">
               <CardHeader>

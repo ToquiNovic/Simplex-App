@@ -1,8 +1,9 @@
 .App {
   text-align: center;
-  background: #195961;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #676672, #395255);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #cfcde6, #697b7e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-image: url('./image/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   height: auto;
 }
 
@@ -25,7 +26,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgba(255, 255, 255, 0);
 }
 
 td.btnSize {width:160px}
