@@ -53,10 +53,10 @@ class Presentation extends React.Component {
   componentDidMount() {
     let result = false ;
     if ( this.validateCoeficientes(this.props) ){
-      console.log('Validado..');
+      // console.log('Validado..');
       result = this.calculateResults();
     }
-    console.log(result);
+    // console.log(result);
     this.setState({ result })
   }
 
@@ -64,17 +64,17 @@ class Presentation extends React.Component {
     if (this.props !== futureProps) {
       let result = false ;
       if ( this.validateCoeficientes(futureProps) ){
-        console.log('Validado..');
+        // console.log('Validado..');
         result = this.calculateResults();
       }
-      console.log(result);
+      // console.log(result);
       this.setState({ result })
     }
   }
 
    //Funcion que Valida si es posible operar con los datos ingresados
    validateCoeficientes = props => {
-    console.log('Validando..');
+    // console.log('Validando..');
     let {variables, restricciones } = props.status;
     //Verificando si los coeficientes de las variables y las restricciones no son nulos
     let varsOperatives = variables.filter(va => va.descripcion !== "");
@@ -86,7 +86,7 @@ class Presentation extends React.Component {
 
   //Funcion de Calculo del modelo.
   calculateResults = () => {
-    console.log('Calculating..');  
+    // console.log('Calculating..');  
     //Convertimos la App en Modelo para Solver.js
     let model = convertAppToModelForSolverPrimal(this.props.status);
 
@@ -97,8 +97,8 @@ class Presentation extends React.Component {
   render() {
     //Obtenemos el resultado almacenado
     let { result } = this.state;
-    console.log("RESULTADOOOOOOO");
-    console.log(result);
+    // console.log("RESULTADOOOOOOO");
+    //console.log(result);
     let printResults;
     let existenCeros = false;
     
@@ -114,6 +114,7 @@ class Presentation extends React.Component {
       let { variables, restricciones, method } = this.props.status;
       if (method === "simplex") {
         if (result.bounded) {
+          
             printResults = <SimplexPresentation variables={variables} restricciones={restricciones} result={result} />
           } 
       }else{

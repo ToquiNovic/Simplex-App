@@ -19,7 +19,7 @@ class Processing extends React.Component {
       .filter(re => re.descripcion !== "")
       .every(re => re.coeficientes.every(co => co !== "") && re.derecha !== "");
     if (verifQty && veriResQty) {
-      console.log(verifQty+'dff:'+veriResQty);
+      //console.log(verifQty+'dff:'+veriResQty);
       
       this.props.lastStep(2);
       this.setState({ faltaCoe: "" });
@@ -41,14 +41,14 @@ class Processing extends React.Component {
       let { variables } = this.props.status;
       variables[name].coeficiente = parseInt(value);
       this.props.handleVariables(variables);
-      console.log(this.props.status.variables);
+      //console.log(this.props.status.variables);
     }
   };
 
   handleCoefRes = (event, ri) => {
     let { name, value } = event.target;
     let { restricciones } = this.props.status;
-    console.log("En la Res:" + ri + ", en el campo:" + name + ",con el valor:" + value);
+    //console.log("En la Res:" + ri + ", en el campo:" + name + ",con el valor:" + value);
 
     switch (name) {
       case "derecha":
@@ -61,7 +61,7 @@ class Processing extends React.Component {
         restricciones[ri].coeficientes[name] = Number(value);
         break;
     }
-    console.log(restricciones);
+    //console.log(restricciones);
     this.props.handleRestricciones(restricciones);
   };
 

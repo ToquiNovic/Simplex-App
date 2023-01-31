@@ -53,9 +53,9 @@ class SinglePage extends React.Component {
   //Esta función guarda el resultado (inutilizada por el momento)
   handleResult = result => this.setState({ result });
   //Esta función habilita el cálculo en el último paso
-  lastStep = step => console.log('Changes')
+  //lastStep = step => console.log('Changes')
   
-  finishButtonClick = result => console.log("En algún momento va a imprimir resultados");
+  //finishButtonClick = result => console.log("En algún momento va a imprimir resultados");
 
   showModels = () => this.setState({modelsOpen:!this.state.modelsOpen});
 
@@ -63,7 +63,7 @@ class SinglePage extends React.Component {
 
   render() {
     let { model, result } = this.state
-    console.log('PRESENTATION:'+result);
+   // console.log('PRESENTATION:'+result);
     
     return (
       <Container fluid className="App">

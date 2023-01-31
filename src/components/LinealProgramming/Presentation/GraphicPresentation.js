@@ -158,7 +158,7 @@ class GraphicPresentation extends React.Component{
     getColorList = restricciones => restricciones.map( restri => Object({title: 'R'+(restri.ri+1)+' Tipo:'+restri.eq, color: randomColor({hue: 'random',luminosity: 'ligth'})}))
 
     getOptimPoint = solSet => {
-        console.log('Generating Optim Point');
+        // console.log('Generating Optim Point');
         //Analizamos el Punto Optimo.
         if ( solSet['1'] && solSet['2'] ) {return{x:Number(solSet['1']).toFixed(2),y:Number(solSet['2']).toFixed(2),P:'1 - OPTIMO'}
         }else if ( solSet['1'] ) {return{x:Number(solSet['1']).toFixed(2),y:(0).toFixed(2),P:'1 - OPTIMO'}
@@ -166,7 +166,7 @@ class GraphicPresentation extends React.Component{
     }
 
     getObjectiveFunctionLine = (variables,optimPoint,xMax,yMax) => {
-        console.log('Getting OF Line');
+        // console.log('Getting OF Line');
         //Funcion que devuelve una Fraccion de Algebra.js a partir de un numero real.
         const getFrac = real => new Fraction(Math.pow(10,(real - real.toFixed()).toString().length - 2)*real, Math.pow(10,(real - real.toFixed()).toString().length - 2)) 
         if (optimPoint){
@@ -237,13 +237,13 @@ class GraphicPresentation extends React.Component{
                     }else{
                         // console.log('Solo yEqu pos')
                         if (yEqu > yMax){
-                            console.log('Caso pendiente de desarrollo, Que hacemos? damos mas altura para mostrar la recta?');
+                            // console.log('Caso pendiente de desarrollo, Que hacemos? damos mas altura para mostrar la recta?');
                             return []
                         }else{
                             let yRelation = Math.abs(yEqu/xEqu)
                             let xVal = yRelation * (yMax - yEqu)
                             if (xVal > xMax){
-                                console.log('Caso PENDIENTE DE VERIFICACION XVal > xMAx');
+                                // console.log('Caso PENDIENTE DE VERIFICACION XVal > xMAx');
                                 let xRelation = Math.abs(xEqu/yEqu)
                                 let yVal = xMax*xRelation + yEqu
                                 return [{x:xEqu,y:0},{x:xMax,y:yVal}]
@@ -277,7 +277,7 @@ class GraphicPresentation extends React.Component{
                 }
                 
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 return [] 
             }
 
@@ -311,7 +311,7 @@ class GraphicPresentation extends React.Component{
                     orderedPoints.push(point)
                     pointsList.splice(indNewPoint,1)           
                 } else { 
-                    console.log('Cant find any Angle');
+                    // console.log('Cant find any Angle');
                     break}
             }
             orderedPoints.push(orderedPoints[0])
@@ -480,7 +480,7 @@ class GraphicPresentation extends React.Component{
                     if( exp2.tipo === 0) { return getPointFromExpXExpY(exp2.restriEquation,exp1.restriEquation) }
                 }  
             } catch (error) {
-                console.log(error);     
+                // console.log(error);     
             }
             
         };
@@ -539,7 +539,7 @@ class GraphicPresentation extends React.Component{
             return restricciones.map( restri => <td key={'S-C-'+point.P+'-'+restri.ri}>{(Math.abs(restri.coeficientes[0]*point.x+restri.coeficientes[1]*point.y - restri.derecha)).toFixed(2)}</td>)
         }
         const calcResult = point =>{return (Math.abs(coeficientes.x*point.x + coeficientes.y*point.y)).toFixed(2)}
-        console.log("IMPRIMIENDO RESULT:" + calcResult);
+        // console.log("IMPRIMIENDO RESULT:" + calcResult);
         let slacksTitles = restricciones.map(restri => <th key={'S-T-'+(restri.ri+1)}>{'S'+(restri.ri+1)}</th>)
         return( <Table>
                     <thead><tr><th>Punto</th><th>Resultado</th><th>X1</th><th>X2</th>{slacksTitles}</tr></thead>
