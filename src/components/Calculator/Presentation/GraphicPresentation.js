@@ -82,11 +82,7 @@ class GraphicPresentation extends React.Component {
     // let lineFunctional = this.getObjectiveFunctionLine(variables,optimMark[0],highestValueX,highestValueY);
     // console.log(lineFunctional);
     //Obtenemos la Tabla de resultados.
-    let tableResult = this.getTableResult(
-      points,
-      coefToValueZ,
-      restricciones
-    );
+    let tableResult = this.getTableResult(points, coefToValueZ, restricciones);
     //Almacenamos el Estado.
     this.setState({ referencias, lines, points, convexPoints, tableResult });
   };
@@ -439,20 +435,20 @@ class GraphicPresentation extends React.Component {
       const calcAng = (point, p) =>
         (Math.atan2(point.y - p.y, point.x - p.x) * 180) / Math.PI + 180;
       //Precargamos puntos que podrian definir el convexo.
-    //   let possiblePoints = [
-    //     { x: 0, y: 0 },
-    //     { x: xMax, y: yMax },
-    //     { x: Number(points[0].x), y: 0 },
-    //     { x: 0, y: Number(points[0].y) },
-    //     { x: xMax, y: Number(points[0].y) },
-    //     { x: Number(points[0].x), y: xMax },
-    //   ];
+      //   let possiblePoints = [
+      //     { x: 0, y: 0 },
+      //     { x: xMax, y: yMax },
+      //     { x: Number(points[0].x), y: 0 },
+      //     { x: 0, y: Number(points[0].y) },
+      //     { x: xMax, y: Number(points[0].y) },
+      //     { x: Number(points[0].x), y: xMax },
+      //   ];
       //Obtenemos la lista de puntos
       let pointsList = [...points];
       //Verificamos puntos que podrian definir el convexo.
-    //   possiblePoints.forEach(
-    //     (p) => verifyPoint(p, restricciones, points) && pointsList.push(p)
-    //   );
+      //   possiblePoints.forEach(
+      //     (p) => verifyPoint(p, restricciones, points) && pointsList.push(p)
+      //   );
       //Nos aseguramos de tomar el punto que este en el extremo derecho.
       pointsList.sort((a, b) => (a.x < b.x ? 1 : -1));
       //Creamos nuestra Output

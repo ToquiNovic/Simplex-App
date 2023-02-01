@@ -1,14 +1,15 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import LinealProgramming from './components/LinealProgramming'
-import SinglePage from "./components/LinealProgramming/SinglePage";
+import Calculator from "./components/Calculator";
+import Page from "./components/Calculator/Page";
 
-const App = () => 
-    <Switch>
-      <Route exact path="/LinealProgramming" component={LinealProgramming} />
-      <Route exact path="/LinealProgramming/SinglePage" component={SinglePage} />
-      
-      <Redirect to="/LinealProgramming/SinglePage" />
-    </Switch>;
+const App = () => (
+  <Switch>
+    <Route exact path="/Calculator" component={Calculator} />
+    <Route exact path="/Calculator/Page" component={Page} />
+
+    <Redirect to="/Calculator" />
+  </Switch>
+);
 
 export default App;

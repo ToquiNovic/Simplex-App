@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+  font-family: 'Bebas Neue', cursive;
+}
+
 .App {
   text-align: center;
   background-image: url('./image/bg.jpg');
@@ -7,41 +13,105 @@
   height: auto;
 }
 
+.App-home {
+  text-align: center;
+  background-image: url('./image/bg.jpg');
+  background-position: center;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 10px;
+}
+
+.logo-btn{
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.logo-btn .logotex {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  padding: 6px 0;
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo-btn .logotex::after {
+  content: "";
+  position: absolute;
+  border-width: 0.0001px;
+  border-style: solid;
+}
+
+.logo-btn:hover .logotex{
+  visibility: visible;
+}
+
+.logo-btn:hover {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo-btn.bottom .logotex{
+  margin-left: -60px;
+  /* top: 150%; */
+  left: 50%;
+}
+.logo-btn.bottom .logotex::after{
+  margin-left: -5px;
+  bottom: 100%;
+  left: 50%;
+  border-color: transparent transparent #2E2E2E transparent;
+}
+
+.GitHub {
+  color: black;
+  position: relative;
+  display: inline-block;
+}
+
+.GitHub .gittex {
+  visibility: hidden;
+  width: 150px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  padding: 6px 0;
+  position: absolute;
+  z-index: 1;
+  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); */
+}
+
+.GitHub .gittex::after {
+  content: "";
+  position: absolute;
+  border-width: 0.001px; 
+  border-style: solid;
+}
+
+.GitHub:hover .gittex {
+  visibility: visible;
+}
+
+.GitHub:hover {
+  color: #218838;
+}
+
 .InputCoeficiente {
-  max-width: 5em;
-  min-width: 4em;
+  max-width: 6em;
+  min-width: 5em;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  max-height: 30vmin;
-  pointer-events: none;
-}
 
-.App-header {
-  background-color: #282c34;
-  max-height: 30vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgba(255, 255, 255, 0);
+td.btnSize {
+  width: 160px
 }
-
-td.btnSize {width:160px}
 
 .App-link {
   color: #db1098;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-

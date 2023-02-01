@@ -29,7 +29,7 @@ class SimplexPresentation extends React.Component {
       //Realizamos calculos
       .map((restri) => (
         <tr key={"TdeV" + variableId + "R" + restri.ri}>
-          <td>{"R" + (+restri.ri +1)}</td>
+          <td>{"R" + (+restri.ri + 1)}</td>
           <td>{cantUsoVar * restri.coeficientes[variableId]}</td>
           <td>
             {restri.derecha - cantUsoVar * restri.coeficientes[variableId]}
@@ -55,7 +55,7 @@ class SimplexPresentation extends React.Component {
     let tableResult = [];
     //Obtenemos el Set de Resultados con Formato [key,value]
     let resultSetArray = Object.entries(result.solutionSet);
-   // console.log("Imprimimos el resultsSetArray:" + resultSetArray);
+    // console.log("Imprimimos el resultsSetArray:" + resultSetArray);
     //Obtenemos la matriz del simplex reducida
     let matrix = result._tableau.matrix;
     // //Obtenemos los indices de cada columna
@@ -77,11 +77,11 @@ class SimplexPresentation extends React.Component {
     tableResult.push({ name: "Z", item: "", value: result.evaluation });
     //Procesamos todos los elementos a producir (result Set)
     resultSetArray.forEach(([key, value]) => {
-      tableResult.push({ name: "Producir", item: "X" + (+key +1), value })
-  });
+      tableResult.push({ name: "Producir", item: "X" + (+key + 1), value });
+    });
     //Procesamos el uso de los recursos, es decir, los elementos extras de la Fila de Resultados(Matriz)
     if (resultSetArray.length < matrix.length - 1) {
-     // console.log("hola");
+      // console.log("hola");
     }
 
     //Procesamos los Costo de Oportunidad y los Valores Marginales

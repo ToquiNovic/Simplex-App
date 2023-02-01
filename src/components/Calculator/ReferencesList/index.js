@@ -10,7 +10,7 @@ import {
   Collapse,
   ListGroup,
   ListGroupItem,
-  Badge
+  Badge,
 } from "reactstrap";
 
 class ReferencesList extends React.Component {
@@ -19,25 +19,31 @@ class ReferencesList extends React.Component {
     this.state = { references: false };
   }
 
-  listDescriptionsVarItems = array =>
+  listDescriptionsVarItems = (array) =>
     array
-      .filter(item => item.descripcion !== "")
-      .map(item => (
+      .filter((item) => item.descripcion !== "")
+      .map((item) => (
         <ListGroupItem key={"DLGIV" + item.xi} className="text-left">
-          <Badge>{"X" + (item.xi+1)}</Badge>
+          <Badge>{"X" + (item.xi + 1)}</Badge>
           {" " + item.descripcion}
-          <Badge className='float-right'>{'C: '+item.coeficiente}</Badge>
+          <Badge className="float-right">{"C: " + item.coeficiente}</Badge>
         </ListGroupItem>
       ));
 
-  listDescriptionsResItems = array =>
+  listDescriptionsResItems = (array) =>
     array
-      .filter(item => item.descripcion !== "")
-      .map(item => (
+      .filter((item) => item.descripcion !== "")
+      .map((item) => (
         <ListGroupItem key={"DLGIR" + item.ri} className="text-left">
-          <Badge>{"R" + (item.ri+1)}</Badge>
+          <Badge>{"R" + (item.ri + 1)}</Badge>
           {" " + item.descripcion}
-          <Badge className='float-right'>{item.coeficientes.map((co,indx) => co+' X'+(indx+1)+' ') + ' '+item.eq+' '+item.derecha}</Badge>
+          <Badge className="float-right">
+            {item.coeficientes.map((co, indx) => co + " X" + (indx + 1) + " ") +
+              " " +
+              item.eq +
+              " " +
+              item.derecha}
+          </Badge>
         </ListGroupItem>
       ));
 
@@ -59,10 +65,14 @@ class ReferencesList extends React.Component {
               <Button
                 outline
                 size="sm"
-                onClick={() => this.setState({ references: !this.state.references })}
+                onClick={() =>
+                  this.setState({ references: !this.state.references })
+                }
                 color={!this.state.references ? "success" : "danger"}
               >
-                {!this.state.references ? "Ver Modelo Matematico" : "Ocultar Modelo Matematico"}
+                {!this.state.references
+                  ? "Ver Modelo Matematico"
+                  : "Ocultar Modelo Matematico"}
               </Button>
             </Col>
           </Row>
@@ -72,7 +82,9 @@ class ReferencesList extends React.Component {
             <h5 className="text-center">Variables:</h5>
             <ListGroup>{this.listDescriptionsVarItems(variables)}</ListGroup>
             <h5 className="text-center mt-5">Restricciones:</h5>
-            <ListGroup>{this.listDescriptionsResItems(restricciones)}</ListGroup>
+            <ListGroup>
+              {this.listDescriptionsResItems(restricciones)}
+            </ListGroup>
           </CardBody>
         </Collapse>
       </Card>
