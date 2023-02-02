@@ -19,7 +19,12 @@
     }
   ],
   "start_url": ".",
+  "display_override": ["fullscreen", "minimal-ui"],
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#11962e",
+  "background_color": "#56e876",
+  "categories":["education","study"],
+  "descripcion": "Aplicacion que calcula el metodo simplex",
+  "dir":"ltr",
+  "lang":"es-MX"
 }
